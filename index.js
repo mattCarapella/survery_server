@@ -3,7 +3,7 @@ const app = express();
 
 
 app.get('/', (req, res) => {
-	res.send({ hi: 'there' });
+	res.send({ bye: 'bruh' });
 });
 
 // dyanimcally figure out which port to listen to. Heroku will pass in environment variable for PORT for proudction env.
