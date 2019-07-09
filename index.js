@@ -12,10 +12,28 @@ passport.use(
 			clientSecret: keys.googleClientSecret,
 			callbackURL: '/auth/google/callback'
 		}, 
-		accessToken => {
-			console.log(accessToken);
+		(accessToken, refreshToken, profile, done) => {
+			// Callback function to create a new user using all info sent back from Google
+			console.log('access token: ' + accessToken);
+			console.log('refresh token: ' + refreshToken);
+			console.log('profile: ' + profile);
 		}
+
 	)
+);
+
+// Route handlers
+app.get(
+	'/auth/google', 
+	passport.authenticate('google', {
+		// scope specifies what access should be had within user profile
+		scope: ['profile', 'email']
+	})
+);
+
+// When a user visits auth/google/callback the CODE is included in the url. Server sends request to Google with code. Google replies with user details
+app.get(
+	'auth/google/callback', passport.authenticate('google')
 );
 
 // dyanimcally figure out which port to listen to. Heroku will pass in environment variable for PORT for proudction env.
