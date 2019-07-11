@@ -8,6 +8,7 @@ require('./models/User');
 require('./services/passport');
 
 mongoose.connect(keys.mongoURI);
+
 const app = express();
 
 // Tell Express it needs to make use of cookies

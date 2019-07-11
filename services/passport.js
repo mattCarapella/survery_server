@@ -5,6 +5,7 @@ const keys = require('../config/keys');
 
 const User = mongoose.model('users');
 
+// token for proving user identity. Automatically called by passport 
 passport.serializeUser((user, done) => {
 	done(null, user.id);
 })
