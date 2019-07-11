@@ -19,6 +19,10 @@ app.use(
 	})
 )
 
+// Tells passport it needs to make use of cookies
+app.use(passport.initialize());
+app.use(passport.session());
+
 require('./routes/authRoutes')(app);
 // same as:
 // const authRoutes = require('./routes/authRoutes');
