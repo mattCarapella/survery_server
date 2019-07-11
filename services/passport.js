@@ -22,13 +22,14 @@ passport.use(
 		{
 			clientID: keys.googleClientID,
 			clientSecret: keys.googleClientSecret,
-			callbackURL: '/auth/google/callback'
+			callbackURL: '/auth/google/callback',
+			proxy: true
 		}, 
 		(accessToken, refreshToken, profile, done) => {
 			// Callback function to create a new user using all info sent back from Google
-			console.log('access token', accessToken);
-			console.log('refresh token', refreshToken);
-			console.log('profile', profile);
+			// console.log('access token', accessToken);
+			// console.log('refresh token', refreshToken);
+			// console.log('profile', profile);
 
 			// search for an existing user with id
 			User.findOne({ googleId: profile.id })
