@@ -12,7 +12,6 @@ mongoose.connect(keys.mongoURI);
 
 const app = express();
 
-
 //**************************************************************************************
 //****************************** MIDDLEWARE ********************************************
 //**************************************************************************************
@@ -35,12 +34,24 @@ app.use(passport.session());
 //**************************************************************************************
 
 
-
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
 // same as:
 // const authRoutes = require('./routes/authRoutes');
-// authRoutes(app);
+// authRoutes(app);      
+
+
+// Make sure Express behaves correctly in production
+if (process.env.NODE_ENV === 'production') {
+	// Make sure Express serves up production assets (main.js, main.css, etc.)
+	app.use(express.static('client/build'));
+
+	// Make sure Express serves up index.html if it doesn't recognize the route
+	const path = require('path');
+	app.get('*', (req, res) => {
+		res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+	});
+}
 
 // dyanimcally figure out which port to listen to. Heroku will pass in environment variable for PORT for proudction env.
 const PORT = process.env.PORT || 5000;
