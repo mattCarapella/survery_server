@@ -1,4 +1,30 @@
-.nav-wrapper {
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 5rem;
+	font-size: 1.3rem;
+	font-weight: 200;
+	letter-spacing: 0.2rem;
 	background: black;
-	padding: 0 2rem 0 2rem;
+	padding-left: 2.1rem;
+	padding-right: 2.1rem;
+	color: #fff;
+
+	a{ 
+		color: #fff;
+	}
+
+	&__logo {
+		font-size: 1.9rem;
+		font-weight: 600;
+	}
+
+	&__links {
+		display: flex;
+
+		&--item {
+			padding-right: 3rem;
+		}
+	}
 }

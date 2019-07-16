@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
+const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 
 require('./models/User');
@@ -11,20 +12,32 @@ mongoose.connect(keys.mongoURI);
 
 const app = express();
 
+
+//**************************************************************************************
+//****************************** MIDDLEWARE ********************************************
+//**************************************************************************************
+
+// Any time a POST, PUT, or PATCH request comes into application, BodyParser will parse it and put it in req.body
+app.use(bodyParser.json());
+
 // Tell Express it needs to make use of cookies
-app.use(
-	cookieSession({
-		// configuration object 
-		maxAge: 30 * 24 * 60 * 60 * 1000,  // cookie expires after 30 days (described in ms)
-		keys: [keys.cookieKey] 	// used to sign/encrypt cookie. Defined in keys.js
-	})
-)
+app.use(cookieSession({
+	maxAge: 30 * 24 * 60 * 60 * 1000,  	// cookie expires after 30 days (described in ms)
+	keys: [keys.cookieKey] 							// used to sign/encrypt cookie. Defined in keys.js
+}));
 
 // Tells passport it needs to make use of cookies
 app.use(passport.initialize());
 app.use(passport.session());
 
+//**************************************************************************************
+//**************************************************************************************
+//**************************************************************************************
+
+
+
 require('./routes/authRoutes')(app);
+require('./routes/billingRoutes')(app);
 // same as:
 // const authRoutes = require('./routes/authRoutes');
 // authRoutes(app);

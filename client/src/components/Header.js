@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Payments from './Payments';
 import '../sass/main.scss';
 
 class Header extends Component {
@@ -14,27 +15,29 @@ class Header extends Component {
 					<li><a href="/auth/google">Login with Google</a></li> 
 				);
 			default: 
-				return (
-					<li><a href="/api/logout">Logout</a></li>
-				);
+				return [
+					<li key="1" className='header__links--item'><Payments /></li>,
+					<li key="2" className='header__links--item'>
+						Credits: {this.props.auth.credits}
+					</li>,
+					<li key="3" className='header__links--item'><a href="/api/logout">Logout</a></li>
+				];
 		}
 	}
 
-	render() {
-		//console.log(this.props);
-		return (
-			<nav>
-				<div className="nav-wrapper">
-      		<Link to={ this.props.auth ? '/surveys' : '/' } className="left brand-logo">
-      			ServA
-      		</Link>
-					<ul className="right"> 
-						{ this.renderContent() }
-					</ul>
-				</div>
-			</nav>
+	render() {  
+		return (	
+			<div className="header">					
+      	<Link to={ this.props.auth ? '/surveys' : '/' } className="header__logo">
+      		ServA
+      	</Link>    
+				<ul className="header__links"> 
+					{ this.renderContent() }
+				</ul>
+			</div>
 		);
 	}
+
 }
 
 // function mapStateToProps(state) {
