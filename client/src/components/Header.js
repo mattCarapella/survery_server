@@ -29,7 +29,7 @@ class Header extends Component {
 		return (	
 			<div className="header">					
       	<Link to={ this.props.auth ? '/surveys' : '/' } className="header__logo">
-      		ServA
+      		servit
       	</Link>    
 				<ul className="header__links"> 
 					{ this.renderContent() }

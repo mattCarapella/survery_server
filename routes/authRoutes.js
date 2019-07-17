@@ -1,6 +1,6 @@
 const passport = require('passport');
 
-module.exports = (app) => {
+module.exports = app => {
 
 	// Route handlers
 
@@ -33,6 +33,6 @@ module.exports = (app) => {
 		res.send(req.user);	
 	});
 
-	
+
 
 }
