@@ -9,8 +9,8 @@ import 'materialize-css/dist/css/materialize.min.css';
 import reducers from './reducers';
 
 // Axios helpers for development testing
-import axios from 'axios';
-window.axios = axios;
+// import axios from 'axios';
+// window.axios = axios;
 
 // 1st arg: Reducer
 // 2nd arg: initial state
@@ -22,5 +22,5 @@ ReactDOM.render(
 	document.querySelector('#root')
 );
 
-console.log('STRIPE KEY IS ', process.env.REACT_APP_STRIPE_KEY);
-console.log('ENVIRONMENT IS', process.env.NODE_ENV);
+// console.log('STRIPE KEY IS ', process.env.REACT_APP_STRIPE_KEY);
+// console.log('ENVIRONMENT IS', process.env.NODE_ENV);
