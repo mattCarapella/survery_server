@@ -1,4 +1,32 @@
 .landing__header{
+	height: 52vh;
 	text-align: center;
 	letter-spacing: 0.9rem;
+	// background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), url(/img/abstract_002.jpg);
+	background-image: url(/img/abstract_002.jpg);
+	background-size: cover;
+	background-position: top; 		/* makes top of image always remain at top of container */
+	position: relative;
+	margin-top: 0rem;
+}
+
+
+.landing__title {
+	text-align: left;
+	font-size: 7rem;
+	font-weight: 600;
+	letter-spacing: 36px;
+	padding: 2rem 0rem 0rem 4rem;
+	margin: 0;
+}
+
+.landing__caption {
+	text-align: left;
+	padding-left: 4rem;
+	font-size: 1.2rem;
+	font-weight: 500;
+
+	&--word {
+		padding-bottom: 2.5rem;
+	}
 }

@@ -3,14 +3,13 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
-
 import App from './components/App';
 import 'materialize-css/dist/css/materialize.min.css';
 import reducers from './reducers';
 
 // Axios helpers for development testing
-// import axios from 'axios';
-// window.axios = axios;
+import axios from 'axios';
+window.axios = axios;
 
 // 1st arg: Reducer
 // 2nd arg: initial state

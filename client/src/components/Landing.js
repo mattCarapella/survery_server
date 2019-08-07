@@ -4,8 +4,13 @@ import '../sass/main.scss'
 const Landing = () => {
 	return (
 		<div className="landing__header"> 
-			<h1>ServA</h1>
-			Collect feedback from your users.
+			<p className="landing__title">serv.it</p>
+			<div className="landing__caption">
+				<div className="landing__caption--word">feedback </div>
+				<div className="landing__caption--word">collection </div>
+				<div className="landing__caption--word">made  </div>
+				<div className="landing__caption--word">simple </div>
+			</div>
 		</div>
 	)
 }

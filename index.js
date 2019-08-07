@@ -9,13 +9,15 @@ require('./models/User');
 require('./models/Survey');
 require('./services/passport');
 
-mongoose.connect(keys.mongoURI);
+// console.log("******   Connecting to Mongoose...   ******");
+mongoose.connect(keys.mongoURI, { useNewUrlParser: true });
 
 const app = express();
 
 //**************************************************************************************
 //****************************** MIDDLEWARE ********************************************
 //**************************************************************************************
+// console.log("******   Defining Middleware...   ******");
 
 // Any time a POST, PUT, or PATCH request comes into application, BodyParser will parse it and put it in req.body
 app.use(bodyParser.json());
@@ -33,6 +35,7 @@ app.use(passport.session());
 //**************************************************************************************
 //******************************	 ROUTES 	********************************************
 //**************************************************************************************
+// console.log("******   Configuring Routes...   ******");
 
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
@@ -43,6 +46,8 @@ require('./routes/surveyRoutes')(app);
 
 
 // Make sure Express behaves correctly in production
+// console.log("******   Configuring Production Environment...   ******");
+
 if (process.env.NODE_ENV === 'production') {
 	// Make sure Express serves up production assets (main.js, main.css, etc.)
 	app.use(express.static('client/build'));
